@@ -36,7 +36,11 @@ public class SmallScale {
         teamMap.put("Heat", heatProb);
         double jazzProb = 3.0;
         teamMap.put("Jazz", jazzProb);
-        double totalProbChance = spursProb + lakersProb + heatProb + jazzProb;
+        double kingsProb = 10.0;
+        teamMap.put("kings", kingsProb);
+        double warriorsProb = 8.0;
+        teamMap.put("Warriors", warriorsProb);
+        double totalProbChance = spursProb + lakersProb + heatProb + jazzProb + kingsProb + warriorsProb;
         int winningNumber = random.nextInt((int) totalProbChance) + 1;
         //System.out.println(winningNumber);
 
@@ -120,8 +124,8 @@ public class SmallScale {
 
 
         // third iteration loop
-        System.out.println("This is the second iteration for second place\n");
-        // run for loop for secondPlaceNum
+        System.out.println("This is the third iteration for second place\n");
+        // run for loop for thirdPlaceNum
         Double thirdPlaceTeamProb = null;
         for (String i : teamMap.keySet()) {
             String team = i;
