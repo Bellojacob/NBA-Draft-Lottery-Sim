@@ -71,14 +71,15 @@ public class SmallScale {
         teamMap.remove(winningTeam);
         totalProbChance -= winningTeamProb;
         System.out.println("This mean the new total probable chance is " + totalProbChance);
-        System.out.println("And the new set of teams are " + teamMap);
+        System.out.println("And the new set of teams are " + teamMap + "\n");
         //System.out.println(totalProbChance);
         int secondPlaceNumRandNum = random.nextInt((int) totalProbChance) + 1;
-        System.out.println(secondPlaceNumRandNum);
+        //System.out.println(secondPlaceNumRandNum + "\n");
 
 
-
+        System.out.println("This is the second iteration for second place\n");
         // run for loop for secondPlaceNum
+        Double secondPlaceTeamProb = null;
         for (String i : teamMap.keySet()) {
             String team = i;
             Double prob = teamMap.get(i);
@@ -100,10 +101,17 @@ public class SmallScale {
                 // subtract their probability from the possible winning numbers. Then rerun the program again with the teams
                 // remaining and find the second place winning number in the arraylist.
                 secondPick = team;
-                Double secondPlaceTeamProb = prob;
+                secondPlaceTeamProb = prob;
                 System.out.println("The " + secondPick + " has Second pick in the NBA Draft Lottery!!");
             }
-//}
         }
+        System.out.println("The total probability was " + totalProbChance + " and now the winning teams chance was : " + secondPick + " : " + secondPlaceTeamProb);
+        teamMap.remove(secondPick);
+        totalProbChance -= secondPlaceTeamProb;
+        System.out.println("This mean the new total probable chance is " + totalProbChance);
+        System.out.println("And the new set of teams are " + teamMap);
+        //System.out.println(totalProbChance);
+        int thirdPlaceNumRandNum = random.nextInt((int) totalProbChance) + 1;
+        //System.out.println(thirdPlaceNumRandNum + "\n");
     }
 }
