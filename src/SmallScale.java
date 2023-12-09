@@ -32,7 +32,9 @@ public class SmallScale {
         teamMap.put("Lakers", lakersProb);
         double heatProb = 5.0;
         teamMap.put("Heat", heatProb);
-        double totalProbChance = spursProb + lakersProb + heatProb;
+        double jazzProb = 3.0;
+        teamMap.put("Jazz", jazzProb);
+        double totalProbChance = spursProb + lakersProb + heatProb + jazzProb;
         int winningNumber = random.nextInt((int) totalProbChance) + 1;
         //System.out.println(winningNumber);
 
