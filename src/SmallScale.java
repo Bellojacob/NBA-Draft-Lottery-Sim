@@ -67,11 +67,16 @@ public class SmallScale {
 
             }
         }
+        System.out.println("The total probability was " + totalProbChance + " and now the winning teams chance was : " + winningTeam + " : " + winningTeamProb);
         teamMap.remove(winningTeam);
         totalProbChance -= winningTeamProb;
+        System.out.println("This mean the new total probable chance is " + totalProbChance);
+        System.out.println("And the new set of teams are " + teamMap);
         //System.out.println(totalProbChance);
         int secondPlaceNumRandNum = random.nextInt((int) totalProbChance) + 1;
         System.out.println(secondPlaceNumRandNum);
+
+
 
         // run for loop for secondPlaceNum
         for (String i : teamMap.keySet()) {
