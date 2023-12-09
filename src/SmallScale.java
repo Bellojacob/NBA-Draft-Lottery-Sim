@@ -27,6 +27,7 @@ public class SmallScale {
         ArrayList<Integer> allNums = new ArrayList<>();
         ArrayList<Integer> secondPlaceNums = new ArrayList<>();
         ArrayList<Integer> thirdPlaceNums = new ArrayList<>();
+        ArrayList<Integer> fourthPlaceNums = new ArrayList<>();
 
         double spursProb = 15.0;
         teamMap.put("Spurs", spursProb);
@@ -156,9 +157,44 @@ public class SmallScale {
         teamMap.remove(thirdPick);
         totalProbChance -= thirdPlaceTeamProb;
         System.out.println("This mean the new total probable chance is " + totalProbChance);
-        System.out.println("And the new set of teams are " + teamMap);
+        System.out.println("And the new set of teams are " + teamMap + "\n\n");
         //System.out.println(totalProbChance);
         int fourthPlaceNumRandNum = random.nextInt((int) totalProbChance) + 1;
         //System.out.println(thirdPlaceNumRandNum + "\n");
+
+
+        String fourthPick = null;
+        Double fourthPlaceTeamProb = null;
+        for (String i : teamMap.keySet()) {
+            String team = i;
+            Double prob = teamMap.get(i);
+            ArrayList<Integer> teamNums = new ArrayList<>();
+            //System.out.println("The team is " + team);
+            //System.out.println("The prob is " + value);
+            Double targetSize = prob;
+
+            while (teamNums.size() < targetSize) {
+                int newRandNum = random.nextInt((int) totalProbChance) + 1;
+                if (!teamNums.contains(newRandNum) && (!fourthPlaceNums.contains(newRandNum))) {
+                    teamNums.add(newRandNum);
+                    fourthPlaceNums.add(newRandNum);
+                }
+            }
+            if (teamNums.contains(fourthPlaceNumRandNum)) {
+                // if the current arraylist has the random number that is the winning number, then assign this team as the
+                // winning team, announce the winning team, then we need to remove the winning team from the team Map and
+                // subtract their probability from the possible winning numbers. Then rerun the program again with the teams
+                // remaining and find the second place winning number in the arraylist.
+                fourthPick = team;
+                fourthPlaceTeamProb = prob;
+                System.out.println("The " + fourthPick + " has Fourth pick in the NBA Draft Lottery!!");
+            }
+        }
+        System.out.println("The total probability was " + totalProbChance + " and now the winning teams chance was : " + fourthPick + " : " + fourthPlaceTeamProb);
+        teamMap.remove(fourthPick);
+        totalProbChance -= fourthPlaceTeamProb;
+        System.out.println("This mean the new total probable chance is " + totalProbChance);
+        System.out.println("And the new set of teams are " + teamMap);
+        //System.out.println(totalProbChance);
     }
 }
